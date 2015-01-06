@@ -7,7 +7,11 @@ public class Test {
 		// Fils de ta mere ! :D
 		//Coucoucouocuocuocucoucoucoucoucoucocuocucoucoucoucocucoucoucocuocucoucoucouc
 		// Salut 
+<<<<<<< Updated upstream
 		// gestion des conflits , cela fonctionne t'il ?
+=======
+		//etzrxyctfvygbuhnjk
+>>>>>>> Stashed changes
 		
 	}
 	
