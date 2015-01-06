@@ -7,6 +7,7 @@ public class Test {
 		// Fils de ta mere ! :D
 		//Coucoucouocuocuocucoucoucoucoucoucocuocucoucoucoucocucoucoucocuocucoucoucouc
 		// Salut 
+		// gestion des conflits , cela fonctionne t'il ?
 		
 	}
 	
