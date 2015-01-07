@@ -13,9 +13,7 @@ import javax.swing.JPanel;
 public class BackGame extends JPanel {
 	public void paintComponent(Graphics g){
 		
-		
-		
-		
+	
 		// ligne du haut 1
 		
 				g.fillRect(0, 0, 1200, 40);
