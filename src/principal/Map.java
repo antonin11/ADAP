@@ -18,6 +18,7 @@ public class Map {
 		int a=15; //abscisse
 		int o=7; //ordonne
 		
+		
 		//carreau=Car
 		
 		int sizeCar;
@@ -114,6 +115,8 @@ public class Map {
 					tab[0][6]=3;
 					tab[14][6]=4;
 					
+				// Case ordinateur
+					tab[11][3]=5;
 					
 					
 				
@@ -158,7 +161,18 @@ public class Map {
 						
 				}
 			}
-				
+				for(int i=0;i<(a);i++){
+					for (int j=0;j<(o);j++){
+									
+						if(tab [i][j] == 5){
+							StdDraw.setPenColor(Color.BLACK);
+							StdDraw.filledSquare(i*sizeCar+sizeCar/2,j*sizeCar+sizeCar/2,sizeCar/2);
+							StdDraw.picture(i*sizeCar+sizeCar/2,j*sizeCar+sizeCar/2,"pc.png");
+							
+						}
+						
+				}
+			}
 			
 				
 				
