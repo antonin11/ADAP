@@ -1,3 +1,5 @@
+package principal;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
@@ -40,7 +42,7 @@ public class Map {
 			StdDraw.setXscale(0,sizeMapx);
 			StdDraw.setYscale(0,sizeMapy);
 			
-			/** Pour montrer les lignes du tableaux 
+			/**
 				for (int i =0;i<=sizeMapx;i+=sizeCar){
 					StdDraw.line(0,i,sizeMapx, i);
 					
@@ -49,8 +51,8 @@ public class Map {
 				for (int i= 0; i <=sizeMapx;i+=sizeCar){
 					StdDraw.line(i,0,i,sizeMapy);
 				}
-				
 				*/
+				
 		}
 		  
 		
@@ -102,9 +104,15 @@ public class Map {
 					tab [13][5] = 1;
 					
 				// Creation des lumieres
-					tab[4][3]=2;
+					tab[2][3]=2;
+					tab[2][0]=2;
+					tab[5][6]=2;
+					tab[6][3]=2;
+					tab[8][2]=2;
 					
-					
+				// Case des personnages
+					tab[0][6]=3;
+					tab[14][6]=4;
 					
 				
 				for(int i=0;i<(a);i++){
@@ -127,7 +135,26 @@ public class Map {
 						
 				}
 			}
-		  
+				for(int i=0;i<(a);i++){
+					for (int j=0;j<(o);j++){
+									
+						if(tab [i][j] == 3){
+							StdDraw.setPenColor(Color.BLUE);
+							StdDraw.filledSquare(i*sizeCar+sizeCar/2,j*sizeCar+sizeCar/2,sizeCar/2);
+						}
+						
+				}
+			}
+				for(int i=0;i<(a);i++){
+					for (int j=0;j<(o);j++){
+									
+						if(tab [i][j] == 4){
+							StdDraw.setPenColor(Color.RED);
+							StdDraw.filledSquare(i*sizeCar+sizeCar/2,j*sizeCar+sizeCar/2,sizeCar/2);
+						}
+						
+				}
+			}
 				
 				
 				//Affiche la position de la souris (aux carreaux)
