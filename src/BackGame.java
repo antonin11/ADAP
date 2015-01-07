@@ -40,7 +40,7 @@ public class BackGame extends JPanel {
 		 try {
 		        
 		        Image img2 = ImageIO.read(new File("perso2.png"));
-		        g.drawImage(img2, 1110, 41, this);;
+		        g.drawImage(img2, 10, 42, this);;
 		        //Pour une image de fond
 		        //g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
 		        } catch (IOException e) {
@@ -51,7 +51,7 @@ public class BackGame extends JPanel {
 		        
 		        Image img1 = ImageIO.read(new File("perso1.png"));
 		        
-		        g.drawImage(img1, 10, 41, this);
+		        g.drawImage(img1, 1110, 42, this);
 		        //Pour une image de fond
 		        //g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
 		        } catch (IOException e) {
