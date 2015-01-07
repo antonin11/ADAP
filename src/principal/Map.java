@@ -114,6 +114,8 @@ public class Map {
 					tab[0][6]=3;
 					tab[14][6]=4;
 					
+					
+					
 				
 				for(int i=0;i<(a);i++){
 					for (int j=0;j<(o);j++){
@@ -140,7 +142,7 @@ public class Map {
 									
 						if(tab [i][j] == 3){
 							StdDraw.setPenColor(Color.BLUE);
-							StdDraw.filledSquare(i*sizeCar+sizeCar/2,j*sizeCar+sizeCar/2,sizeCar/2);
+							StdDraw.picture(i*sizeCar+sizeCar/2,j*sizeCar+sizeCar/2,"perso2.png");
 						}
 						
 				}
@@ -150,11 +152,15 @@ public class Map {
 									
 						if(tab [i][j] == 4){
 							StdDraw.setPenColor(Color.RED);
-							StdDraw.filledSquare(i*sizeCar+sizeCar/2,j*sizeCar+sizeCar/2,sizeCar/2);
+							StdDraw.picture(i*sizeCar+sizeCar/2,j*sizeCar+sizeCar/2,"perso1.png");
+							
 						}
 						
 				}
 			}
+				
+			
+				
 				
 				
 				//Affiche la position de la souris (aux carreaux)
