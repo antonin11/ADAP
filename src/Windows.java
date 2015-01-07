@@ -16,7 +16,7 @@
 
 	import javax.imageio.ImageIO;
 
-
+// SWING
 
 	public class Windows extends JFrame  {
 
@@ -40,14 +40,17 @@
 		    fenetre.setContentPane(pan1);
 		    fenetre.setContentPane(new WindowRunBack());
 		    
+		    /*
+		     * ne fonctionne pas 
 		  //Creation de la barre des menus
 		    JMenuBar menu_bar1= new JMenuBar();
 		 
 		    // Creation des differents menus
 		    JMenu menu1= new JMenu ("Jouer");
 		    JMenu menu2 =new JMenu ("Infos");
-		   
+		   */
 		    
+		    //bouton à l'intérieur de la fenêtre
 		    fenetre.setLayout(null);
 		    JButton Play= new JButton("Jouer");
 		    JButton Info= new JButton("Infos");

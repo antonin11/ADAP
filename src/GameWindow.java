@@ -28,7 +28,7 @@ public class GameWindow extends JFrame  {
 
 	    //Paramtre de la fenetre de jeu..
 	    
-	    fenetrejeu.setTitle("Super Shooter 2D");
+	    fenetrejeu.setTitle("A.D.A.P 2D");
 	    fenetrejeu.setSize(1200, 660);
 	    fenetrejeu.setResizable(false);
 	    fenetrejeu.setBackground(Color.WHITE);

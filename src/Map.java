@@ -13,8 +13,8 @@ public class Map {
 
 		int sizeMapx;
 		int sizeMapy;
-		int a=15;//abscisse
-		int o=7;//ordonnée
+		int a=15; //abscisse
+		int o=7; //ordonnée
 		
 		//carreau=Car
 		
@@ -30,7 +30,7 @@ public class Map {
 			display();
 			
 			if(true){
-				ressemblance();
+				remplissage();
 			}
 		}
 		
@@ -54,7 +54,7 @@ public class Map {
 		}
 		  
 		
-			public void ressemblance(){
+			public void remplissage(){
 				
 				// Creation des couloirs;
 				
