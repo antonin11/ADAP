@@ -30,14 +30,19 @@ public class Map {
 			sizeMapy=o*80;
 			sizeCar=80;
 			
-			display();
+				display();
 			
-			if(true){
-				remplissage();
+			while(true){
+				remplissageSquare();
+				remplissagePerso();
+				
+				
+				
 			}
+			
 		}
 		
-		public void display(){
+			public void display(){ // Afficher la MAP à l'écran c'est à dire défnit une fenetre.
 		    
 			StdDraw.setCanvasSize(sizeMapx,sizeMapy);
 			StdDraw.setXscale(0,sizeMapx);
@@ -54,13 +59,11 @@ public class Map {
 				}
 				*/
 				
-		}
-		  
-		
-			public void remplissage(){
+		}			
+			public void remplissageSquare(){ // Met en couleur les différents carrées de la map
 				
 				// Creation des couloirs;
-				
+
 					tab [1][1] = 1;
 					tab [1][2] = 1;
 					tab [1][3] = 1;
@@ -94,7 +97,7 @@ public class Map {
 					
 					tab [11][0] = 1;
 					tab [11][1] = 1;
-					tab [11][3] = 1;
+					// tab [11][3] = 1;
 					tab [11][4] = 1;
 					tab [11][5] = 1;
 					
@@ -111,12 +114,7 @@ public class Map {
 					tab[6][3]=2;
 					tab[8][2]=2;
 					
-				// Case des personnages
-					tab[0][6]=3;
-					tab[14][6]=4;
-					
-				// Case ordinateur
-					tab[11][3]=5;
+				
 					
 					
 				
@@ -140,12 +138,24 @@ public class Map {
 						
 				}
 			}
+				
+				
+			}
+			public void remplissagePerso(){
+				// Case des personnages
+				tab[0][6]=3;
+				tab[14][6]=4;
+				
+			// Case ordinateur
+				tab[11][3]=5;
+				
 				for(int i=0;i<(a);i++){
 					for (int j=0;j<(o);j++){
 									
-						if(tab [i][j] == 3){
-							StdDraw.setPenColor(Color.BLUE);
-							StdDraw.picture(i*sizeCar+sizeCar/2,j*sizeCar+sizeCar/2,"perso2.png");
+						if(tab [i][j] == 4){
+							StdDraw.setPenColor(Color.RED);
+							StdDraw.picture(i*sizeCar+sizeCar/2,j*sizeCar+sizeCar/2,"perso1.png", 60, 60,0);
+							
 						}
 						
 				}
@@ -153,10 +163,9 @@ public class Map {
 				for(int i=0;i<(a);i++){
 					for (int j=0;j<(o);j++){
 									
-						if(tab [i][j] == 4){
-							StdDraw.setPenColor(Color.RED);
-							StdDraw.picture(i*sizeCar+sizeCar/2,j*sizeCar+sizeCar/2,"perso1.png");
-							
+						if(tab [i][j] == 3){
+							StdDraw.setPenColor(Color.BLUE);
+							StdDraw.picture(i*sizeCar+sizeCar/2,j*sizeCar+sizeCar/2,"perso2.png", 50, 60,0);
 						}
 						
 				}
@@ -165,25 +174,25 @@ public class Map {
 					for (int j=0;j<(o);j++){
 									
 						if(tab [i][j] == 5){
-							StdDraw.setPenColor(Color.BLACK);
+							StdDraw.setPenColor(Color.GREEN);
 							StdDraw.filledSquare(i*sizeCar+sizeCar/2,j*sizeCar+sizeCar/2,sizeCar/2);
-							StdDraw.picture(i*sizeCar+sizeCar/2,j*sizeCar+sizeCar/2,"pc.png");
+							// StdDraw.picture(i*sizeCar+sizeCar/2,(j*sizeCar+sizeCar/2)-20,"pc.png", 30, 30,0);
 							
 						}
 						
 				}
 			}
-			
 				
 				
 				
-				//Affiche la position de la souris (aux carreaux)
+				
+				/**Affiche la position de la souris (aux carreaux)
 				if (StdDraw.mousePressed()){
 						double clickX= StdDraw.mouseX();
 						double clickY= StdDraw.mouseY();
 	
 	System.out.println("["+(int)clickX/sizeCar+";"+(int)((clickY/sizeCar))+"]");
-		}
+		}*/
      }
 
 		
