@@ -185,6 +185,8 @@ public class Map {
 	System.out.println("["+(int)clickX/sizeCar+";"+(int)((clickY/sizeCar))+"]");
 		}
      }
+
+		
 }
 			
 			

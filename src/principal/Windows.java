@@ -1,20 +1,26 @@
-	import java.awt.Color;
-	import java.awt.Component;
-	import java.awt.Font;
-	import java.awt.Graphics;
+package principal;
+
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.Graphics;
 
 	import javax.swing.JButton;
-	import javax.swing.JMenu;
-	import javax.swing.JMenuBar;
-	import javax.swing.JPanel;
-	import javax.swing.JFrame;
-	import javax.swing.UIManager;
-	import java.awt.Image;
-	import java.awt.event.MouseEvent;
-	import java.io.File;
-	import java.io.IOException;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JPanel;
+import javax.swing.JFrame;
+import javax.swing.UIManager;
 
-	import javax.imageio.ImageIO;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+import StdDraw.StdDraw;
 
 // SWING
 
@@ -23,8 +29,7 @@
 
 		public static void main(String[] args){
 		JFrame fenetre = new JFrame();
-		
-		    
+
 		    //Parametre de la fenetre de jeu..
 		    
 		    fenetre.setTitle("A.D.A.P 2D");
@@ -77,8 +82,11 @@
 		    fenetre.setVisible(true);
 		 
 		    
+	
+		 
 		
 		}
 	}
+
 
 
