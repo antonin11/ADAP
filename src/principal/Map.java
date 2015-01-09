@@ -186,16 +186,17 @@ public class Map {
 				
 				
 				
-				/**Affiche la position de la souris (aux carreaux)
+				/** Affiche la position de la souris (aux carreaux)
 				if (StdDraw.mousePressed()){
 						double clickX= StdDraw.mouseX();
 						double clickY= StdDraw.mouseY();
 	
-	System.out.println("["+(int)clickX/sizeCar+";"+(int)((clickY/sizeCar))+"]");
-		}*/
-     }
+	System.out.println("["+clickX/sizeCar+";"+(int)((clickY/sizeCar))+"]");
+	*/
+		}
+     
 
-		
+
 }
 			
 			

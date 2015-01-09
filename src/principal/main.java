@@ -18,11 +18,15 @@ public class main {
 			
 			Map map = new Map();
 			
+
+			
+			
+		}
 			
 			
 			
 		}	
-}
+
 	
 
 
