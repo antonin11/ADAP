@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 import StdDraw.StdDraw;
 
 public class Map {
@@ -141,10 +143,11 @@ public class Map {
 				
 				
 			}
+			
 			public void remplissagePerso(){
 				// Case des personnages
-				tab[0][6]=3;
-				tab[14][6]=4;
+				tab[0][6]=4;
+				tab[14][6]=3;
 				
 			// Case ordinateur
 				tab[11][3]=5;
@@ -154,7 +157,8 @@ public class Map {
 									
 						if(tab [i][j] == 4){
 							StdDraw.setPenColor(Color.RED);
-							StdDraw.picture(i*sizeCar+sizeCar/2,j*sizeCar+sizeCar/2,"perso1.png", 60, 60,0);
+							StdDraw.filledCircle(1170,520, 15);
+							//StdDraw.picture(1170,520,"perso1.png", 40, 40,0);
 							
 						}
 						
@@ -165,7 +169,9 @@ public class Map {
 									
 						if(tab [i][j] == 3){
 							StdDraw.setPenColor(Color.BLUE);
-							StdDraw.picture(i*sizeCar+sizeCar/2,j*sizeCar+sizeCar/2,"perso2.png", 50, 60,0);
+							
+							StdDraw.filledCircle(30,520, 15);
+							//StdDraw.picture(30,520,"perso1.png", 40, 40,0);
 						}
 						
 				}
@@ -182,6 +188,8 @@ public class Map {
 						
 				}
 			}
+				
+				
 				
 				
 				

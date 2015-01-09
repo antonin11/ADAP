@@ -10,19 +10,19 @@ import StdDraw.StdDraw;
 public class main {
 	public static void main(String[] args){
 		
-		show();
+		Map map = new Map();
+		Perso charac = new Perso();
 		
-	}
 		
-		public static void show(){
+	
 			
-			Map map = new Map();
+			
 			
 
 			
 			
 		}
-			
+		
 			
 			
 		}	
