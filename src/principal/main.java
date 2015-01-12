@@ -8,11 +8,29 @@ import StdDraw.StdDraw;
 
 
 public class main {
-	public static void main(String[] args){
+	
+	public static void main(String[] args) throws InterruptedException{
 		
 		Map map = new Map();
-		Perso charac = new Perso();
 		
+		
+		while(true){
+			
+			StopWatch stopWatch = new StopWatch();
+			stopWatch.start();
+			
+			map.display();
+			
+			
+		
+			stopWatch.stop();
+			
+			long timeToWait = 200 - stopWatch.getElapsedTime();
+			
+			if(timeToWait > 0)
+				Thread.sleep(timeToWait);
+			
+		}
 		
 	
 			
