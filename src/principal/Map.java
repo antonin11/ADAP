@@ -1,5 +1,7 @@
 package principal;
 
+import StdDraw.StdDraw;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
@@ -11,8 +13,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
-
-import StdDraw.StdDraw;
 
 public class Map {
 	public int sizeMapx;
@@ -63,7 +63,7 @@ public class Map {
 		 */
 
 		remplissageSquare();
-		remplissagePerso();
+		//remplissagePerso();
 
 		StdDraw.show(0);
 
@@ -128,7 +128,9 @@ public class Map {
 
 	}
 
-	public void remplissagePerso() {
+	
+	
+/*	public void remplissagePerso() {
 
 		StdDraw.show(0);
 		for (int i = 0; i < (a); i++) {
@@ -159,7 +161,8 @@ public class Map {
 
 			}
 		}
-
+	}
+*/
 		/**
 		 * Affiche la position de la souris (aux carreaux) if
 		 * (StdDraw.mousePressed()){ double clickX= StdDraw.mouseX(); double
@@ -168,6 +171,5 @@ public class Map {
 		 * System.out.println("["+clickX/sizeCar+";"+(int)((clickY/sizeCar))+"]"
 		 * );
 		 */
-	}
 
 }

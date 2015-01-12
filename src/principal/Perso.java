@@ -1,18 +1,22 @@
 package principal;
 
-import java.awt.Color;
-
 import StdDraw.StdDraw;
 
-public class Perso extends Map{
+import java.awt.Color;
+
+public class Perso{
 	 
-public void Perso(String[] args){
+	int posX;
+	int posY;
 	
 	
-		
-		
+public Perso (int x, int y){
+		posX = x ;
+		posY = y ;
 	}
+
+public void moove() {
 	
-	
+	}
 
 }

@@ -1,14 +1,20 @@
 package principal;
 
+import StdDraw.StdDraw;
+
 import java.awt.Color;
 
 import javax.swing.JFrame;
 
-import StdDraw.StdDraw;
-
 public class main {
 
 	public static void main(String[] args) throws InterruptedException {
+		
+		//on définit le nombre de joueur et on crée un tableau de Perso du nombre de joueur
+		int nbJoueur = 2 ;
+		Perso [] perso = new Perso [nbJoueur];
+		perso[0]=new Perso(2,2);
+		perso[1]=new Perso(2,16);
 
 		Map map = new Map();
 
