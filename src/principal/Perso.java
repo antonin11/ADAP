@@ -3,6 +3,7 @@ package principal;
 import StdDraw.StdDraw;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 
 public class Perso{
 	 
@@ -17,6 +18,10 @@ public Perso (int x, int y){
 
 public void moove() {
 	
+	if(StdDraw.isKeyPressed(KeyEvent.VK_SPACE)){
+    	StdDraw.setPenColor(Color.RED);
+    	StdDraw.filledCircle(600,300,200);
+    }
 	}
 
 }

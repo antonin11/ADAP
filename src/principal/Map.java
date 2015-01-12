@@ -63,7 +63,7 @@ public class Map {
 		 */
 
 		remplissageSquare();
-		//remplissagePerso();
+		// remplissagePerso();
 
 		StdDraw.show(0);
 
@@ -125,44 +125,31 @@ public class Map {
 
 			}
 		}
+		
+		
 
-	}
-
-	
-	
-/*	public void remplissagePerso() {
-
-		StdDraw.show(0);
-		for (int i = 0; i < (a); i++) {
-			for (int j = 0; j < (o); j++) {
-
-				if (tab[j][i] == 4) {
-					StdDraw.setPenColor(Color.RED);
-					double x = WIDTH * i;
-					double y = sizeMapy - WIDTH * j;
-					double r = WIDTH / 3;
-					StdDraw.filledCircle(x, y, r);
-
-				}
-
-			}
-		}
-		for (int i = 0; i < (a); i++) {
-			for (int j = 0; j < (o); j++) {
-
-				if (tab[j][i] == 5) {
-					StdDraw.setPenColor(Color.BLUE);
-					double x = WIDTH * i;
-					double y = sizeMapy - WIDTH * j;
-					double r = WIDTH / 3;
-					StdDraw.filledCircle(x, y, r);
-
-				}
-
-			}
-		}
-	}
-*/
+		/*
+		 * public void remplissagePerso() {
+		 * 
+		 * for (int i = 0; i < (a); i++) { for (int j = 0; j < (o); j++) {
+		 * 
+		 * if (tab[j][i] == 4) { StdDraw.setPenColor(Color.RED); double x =
+		 * WIDTH * i; double y = sizeMapy - WIDTH * j; double r = WIDTH / 3;
+		 * StdDraw.filledCircle(x, y, r);
+		 * 
+		 * }
+		 * 
+		 * } } for (int i = 0; i < (a); i++) { for (int j = 0; j < (o); j++) {
+		 * 
+		 * if (tab[j][i] == 5) { StdDraw.setPenColor(Color.BLUE); double x =
+		 * WIDTH * i; double y = sizeMapy - WIDTH * j; double r = WIDTH / 3;
+		 * StdDraw.filledCircle(x, y, r);
+		 * 
+		 * }
+		 * 
+		 * } } }
+		 */
+		
 		/**
 		 * Affiche la position de la souris (aux carreaux) if
 		 * (StdDraw.mousePressed()){ double clickX= StdDraw.mouseX(); double
@@ -172,4 +159,5 @@ public class Map {
 		 * );
 		 */
 
+	}
 }
