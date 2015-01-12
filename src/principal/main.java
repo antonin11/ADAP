@@ -22,10 +22,7 @@ public class main {
 			
 			
 		}
-		
-			
-			
-		}	
+}	
 
 	
 
