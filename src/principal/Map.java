@@ -52,7 +52,9 @@ public class Map {
 
 		StdDraw.setXscale(0, sizeMapx);
 		StdDraw.setYscale(0, sizeMapy);
-
+		affichageTableau();
+		remplissagePerso();
+		StdDraw.show(0);
 		/**
 		 * for (int i =0;i<=sizeMapx;i+=sizeCar){ StdDraw.line(0,i,sizeMapx, i);
 		 * 
@@ -60,16 +62,11 @@ public class Map {
 		 * 
 		 * for (int i= 0; i <=sizeMapx;i+=sizeCar){
 		 * StdDraw.line(i,0,i,sizeMapy); }
-		 */
-
-		remplissageSquare();
-		//remplissagePerso();
-
-		StdDraw.show(0);
+		 */		
 
 	}
 
-	public void remplissageSquare() {
+	public void affichageTableau() {
 
 		for (int i = 0; i < (a); i++) {
 			for (int j = 0; j < (o); j++) {
@@ -130,7 +127,7 @@ public class Map {
 
 	
 	
-/*	public void remplissagePerso() {
+ public void remplissagePerso() {
 
 		StdDraw.show(0);
 		for (int i = 0; i < (a); i++) {
@@ -147,7 +144,7 @@ public class Map {
 
 			}
 		}
-		for (int i = 0; i < (a); i++) {
+		 for (int i = 0; i < (a); i++) {
 			for (int j = 0; j < (o); j++) {
 
 				if (tab[j][i] == 5) {
@@ -162,7 +159,7 @@ public class Map {
 			}
 		}
 	}
-*/
+
 		/**
 		 * Affiche la position de la souris (aux carreaux) if
 		 * (StdDraw.mousePressed()){ double clickX= StdDraw.mouseX(); double
@@ -171,5 +168,5 @@ public class Map {
 		 * System.out.println("["+clickX/sizeCar+";"+(int)((clickY/sizeCar))+"]"
 		 * );
 		 */
+ }
 
-}

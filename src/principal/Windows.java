@@ -7,7 +7,7 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
 
-	import javax.swing.JButton;
+import javax.swing.JButton;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
