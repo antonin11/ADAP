@@ -52,8 +52,7 @@ public class Map {
 
 		StdDraw.setXscale(0, sizeMapx);
 		StdDraw.setYscale(0, sizeMapy);
-		affichageTableau();
-		remplissagePerso();
+		affichageInit();
 		StdDraw.show(0);
 		/**
 		 * for (int i =0;i<=sizeMapx;i+=sizeCar){ StdDraw.line(0,i,sizeMapx, i);
@@ -66,99 +65,44 @@ public class Map {
 
 	}
 
-	public void affichageTableau() {
+	public void affichageInit() {
 
 		for (int i = 0; i < (a); i++) {
 			for (int j = 0; j < (o); j++) {
+					double x = WIDTH * i;
+					double y = sizeMapy - WIDTH * j;
+					double r = WIDTH / 2;
 
 				if (tab[j][i] == coul) {
 					StdDraw.setPenColor(Color.WHITE);
-					double x = WIDTH * i;
-					double y = sizeMapy - WIDTH * j;
-					double r = WIDTH / 2;
 					StdDraw.filledSquare(x, y, r);
 				}
-			}
-		}
-
-		for (int i = 0; i < (a); i++) {
-			for (int j = 0; j < (o); j++) {
-
-				if (tab[j][i] == mur) {
+				else if (tab[j][i] == mur) {
 					StdDraw.setPenColor(Color.BLACK);
-					double x = WIDTH * i;
-					double y = sizeMapy - WIDTH * j;
-					double r = WIDTH / 2;
 					StdDraw.filledSquare(x, y, r);
 				}
-			}
-		}
-
-		for (int i = 0; i < (a); i++) {
-			for (int j = 0; j < (o); j++) {
-
-				if (tab[j][i] == lum) {
+				else if (tab[j][i] == lum) {
 					StdDraw.setPenColor(Color.YELLOW);
-					double x = WIDTH * i;
-					double y = sizeMapy - WIDTH * j;
-					double r = WIDTH / 2;
 					StdDraw.filledSquare(x, y, r);
 				}
-
-			}
-		}
-
-		for (int i = 0; i < (a); i++) {
-			for (int j = 0; j < (o); j++) {
-
-				if (tab[j][i] == ordi) {
+				else if (tab[j][i] == ordi) {
 					StdDraw.setPenColor(Color.GREEN);
-					double x = WIDTH * i;
-					double y = sizeMapy - WIDTH * j;
-					double r = WIDTH / 2;
 					StdDraw.filledSquare(x, y, r);
-
 				}
-
-			}
-		}
-
-	}
-
-	
-	
- public void remplissagePerso() {
-
-		StdDraw.show(0);
-		for (int i = 0; i < (a); i++) {
-			for (int j = 0; j < (o); j++) {
-
-				if (tab[j][i] == 4) {
+				else if (tab[j][i] == 4) {
 					StdDraw.setPenColor(Color.RED);
-					double x = WIDTH * i;
-					double y = sizeMapy - WIDTH * j;
-					double r = WIDTH / 3;
 					StdDraw.filledCircle(x, y, r);
-
 				}
-
-			}
-		}
-		 for (int i = 0; i < (a); i++) {
-			for (int j = 0; j < (o); j++) {
-
-				if (tab[j][i] == 5) {
+				else if (tab[j][i] == 5) {
 					StdDraw.setPenColor(Color.BLUE);
-					double x = WIDTH * i;
-					double y = sizeMapy - WIDTH * j;
-					double r = WIDTH / 3;
 					StdDraw.filledCircle(x, y, r);
-
 				}
-
 			}
 		}
+
 	}
+
+}
 
 		/**
 		 * Affiche la position de la souris (aux carreaux) if
@@ -168,5 +112,4 @@ public class Map {
 		 * System.out.println("["+clickX/sizeCar+";"+(int)((clickY/sizeCar))+"]"
 		 * );
 		 */
- }
 
