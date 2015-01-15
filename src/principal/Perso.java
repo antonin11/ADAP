@@ -53,9 +53,9 @@ public class Perso extends Map {
 
 	public void persoDisplay() {
 		StdDraw.setPenColor(c);
-		int r = (int) WIDTH / 3;
-		int x = (int) WIDTH * getX();
-		int y = (int) (sizeMapY - WIDTH * getY());
+		double r = 28;
+		double x = WIDTH * getX()+WIDTH/2;
+		double y =  WIDTH * getY()+WIDTH/2;
 		StdDraw.filledCircle(x, y, r);
 
 	}

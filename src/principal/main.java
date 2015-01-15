@@ -29,21 +29,22 @@ public class main {
 
 			StopWatch stopWatch = new StopWatch();
 			stopWatch.start();
-
+			
 			Map.lumiere();
+			tir1(perso1);
+			//tir(perso2);
 			move1(perso1);
 			move(perso2);
-		
 			
 			StdDraw.show(0);
 			map.display();
 
 			perso1.persoDisplay();
 			perso2.persoDisplay();
-
+	
 			stopWatch.stop();
 
-			long timeToWait = 100 - stopWatch.getElapsedTime();
+			long timeToWait = 50 - stopWatch.getElapsedTime();
 
 			if (timeToWait > 0)
 				Thread.sleep(timeToWait);
@@ -61,15 +62,15 @@ public class main {
 		
 		if (StdDraw.isKeyPressed(KeyEvent.VK_UP)) {
 
-			if(Map.tab[Y-1][X]!=Map.mur){
-				Y = Y - 1;
+			if(Map.tab[Y+1][X]!=Map.mur){
+				Y = Y + 1;
 
 			}
 
 		}
 		if (StdDraw.isKeyPressed(KeyEvent.VK_DOWN)) {
-			if(Map.tab[Y+1][X]!=Map.mur){
-				Y = Y + 1;
+			if(Map.tab[Y-1][X]!=Map.mur){
+				Y = Y - 1;
 			}
 		}
 
@@ -96,13 +97,13 @@ public class main {
 		Y = perso.getY();
 
 		if (StdDraw.isKeyPressed(KeyEvent.VK_Z)) {
-			if(Map.tab[Y-1][X]!=Map.mur){
-			Y = Y - 1;
+			if(Map.tab[Y+1][X]!=Map.mur){
+			Y = Y + 1;
 			}
 		}
 		if (StdDraw.isKeyPressed(KeyEvent.VK_S)) {
-			if(Map.tab[Y+1][X]!=Map.mur){
-			Y = Y + 1;
+			if(Map.tab[Y-1][X]!=Map.mur){
+			Y = Y - 1;
 		}
 		}
 		if (StdDraw.isKeyPressed(KeyEvent.VK_D)) {
@@ -122,25 +123,19 @@ public class main {
 
 		perso.setX(X);
 		perso.setY(Y);
+		
+		
+
+		}
+
+	public static void tir1(Perso perso) {
 		if (StdDraw.isKeyPressed(KeyEvent.VK_W)) {
-			StdDraw.setPenColor(Color.BLUE);
+			if(Map.tab[Y-1][X]!=Map.mur){
+				StdDraw.setPenColor(Color.BLUE);
+				StdDraw.filledRectangle(X, Y, X+4, 1);
+				
+			}
 			
-			StdDraw.filledRectangle(WIDTH *X+170, Map.sizeMapY - (WIDTH * Y) -70, 100, 2);
-
 		}
-
 	}
-	public static void tir(Perso perso) {
-		
-		if (StdDraw.isKeyPressed(KeyEvent.VK_ENTER)) {
-			StdDraw.setPenColor(Color.RED);
-			StdDraw.filledRectangle(perso.getX(), Y+WIDTH/3, 50, 50);
-			;
-		
-		}
-
-	}
-	
-
-	
 }

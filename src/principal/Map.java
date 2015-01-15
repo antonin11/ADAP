@@ -11,10 +11,12 @@ public class Map extends main {
 	public static final float WIDTH = 70f;
 	public static final int sizeMapX = 1200;
 	public static final int sizeMapY = 600;
+	
 	static int coul = 0;
 	static int mur = 1;
-	int lum = 2;
-	int ordi = 3;
+	
+	static int lum = 2;
+	static int ordi = 3;
 
 	public static int[][] tab = {
 			{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
@@ -26,6 +28,18 @@ public class Map extends main {
 			{ 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1 },
 			{ 1, 0, 0, 2, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
 			{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } };
+	
+	public static int[][] lumi = {
+		
+		{ 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, -1, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, -1, -1, -1, 0, -1, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, -1, 0, 0, 0, -1, -1, -1, -1, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, -1, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
 
 	// Le tableau est définit en intervertissant les x et les y .
 	// Il faut donc définir x=j et y=i dans les boucles for.
@@ -42,15 +56,15 @@ public class Map extends main {
 
 		for (int j = 0; j < tab.length; j++) {
 			for (int i = 0; i < tab[j].length; i++) {
-				double x = WIDTH * i;
-				double y = sizeMapY - WIDTH * j;
 				double r = WIDTH / 2;
+				double x = WIDTH * i+r;
+				double y =  WIDTH * j+r;
 
 				if (tab[j][i] == coul) {
 					StdDraw.setPenColor(Color.WHITE);
 					StdDraw.filledSquare(x, y, r);
 				} else if (tab[j][i] == mur) {
-					StdDraw.setPenColor(Color.BLACK);
+					StdDraw.setPenColor(Color.DARK_GRAY);
 					StdDraw.filledSquare(x, y, r);
 				} else if (tab[j][i] == lum) {
 					StdDraw.setPenColor(Color.YELLOW);
@@ -74,19 +88,17 @@ public class Map extends main {
 	}
 
 	public static void lumiere() {
-		for (int j = 0; j < tab.length; j++) {
-			for (int i = 0; i < tab[j].length; i++) {
-				double x = WIDTH * i;
-				double y = sizeMapY - WIDTH * j;
+		for (int j = 0; j < lumi.length; j++) {
+			for (int i = 0; i < lumi[j].length; i++) {
+				
 				double r = WIDTH / 2;
+				double x = WIDTH * i+r;
+				double y =  WIDTH * j+r;
 
 				if (StdDraw.isKeyPressed(KeyEvent.VK_SPACE)) {
-					if (tab[j][i] != 2) {
-
+					if (lumi[j][i] ==0) {
 						StdDraw.setPenColor(Color.BLACK);
-						StdDraw.filledSquare(x, y, r + 1);
-
-					}
+						StdDraw.filledSquare(x, y, r+1);}
 
 				}
 			}
