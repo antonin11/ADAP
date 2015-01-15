@@ -19,6 +19,7 @@ public class Map extends main {
 	static int ordi = 3;
 
 	public static int[][] tab = /*{
+
 			{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
 			{ 1, 0, 1, 0, 1, 0, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1 },
 			{ 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
@@ -80,11 +81,12 @@ public class Map extends main {
 				double x = WIDTH * i+r;
 				double y =  WIDTH * j+r;
 
+
 				if (tab[j][i] == coul) {
 					StdDraw.setPenColor(Color.WHITE);
 					StdDraw.filledSquare(x, y, r);
 				} else if (tab[j][i] == mur) {
-					StdDraw.setPenColor(Color.BLACK);
+					StdDraw.setPenColor(Color.GRAY);
 					StdDraw.filledSquare(x, y, r);
 				} else if (tab[j][i] == lum) {
 					StdDraw.setPenColor(Color.YELLOW);
@@ -118,8 +120,8 @@ public class Map extends main {
 				if (StdDraw.isKeyPressed(KeyEvent.VK_SPACE)) {
 					if (lumi[j][i] ==0) {
 						StdDraw.setPenColor(Color.BLACK);
-						StdDraw.filledSquare(x, y, r+1);}
 
+						StdDraw.filledSquare(x, y, r+1);}
 				}
 			}
 

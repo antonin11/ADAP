@@ -31,10 +31,12 @@ public class main {
 			stopWatch.start();
 			
 			Map.lumiere();
-			tir1(perso1);
+			laserPerso1(perso1);
 			//tir(perso2);
 			move1(perso1);
 			move(perso2);
+			
+			
 			
 			StdDraw.show(0);
 			map.display();
@@ -46,9 +48,10 @@ public class main {
 
 			long timeToWait = 50 - stopWatch.getElapsedTime();
 
+
 			if (timeToWait > 0)
 				Thread.sleep(timeToWait);
-
+			
 		}
 
 	}
@@ -107,12 +110,12 @@ public class main {
 		}
 		}
 		if (StdDraw.isKeyPressed(KeyEvent.VK_D)) {
-			if(Map.tab[Y][X+1]!=Map.mur){
+			if(map.tab[Y][X+1]!=Map.mur){
 			X = X + 1;
 			}
 		}
 		if (StdDraw.isKeyPressed(KeyEvent.VK_Q)) {
-			if(Map.tab[Y][X-1]!=Map.mur){
+			if(map.tab[Y][X-1]!=Map.mur){
 			X = X - 1;
 
 		}
@@ -129,12 +132,52 @@ public class main {
 		}
 
 	public static void tir1(Perso perso) {
+
 		if (StdDraw.isKeyPressed(KeyEvent.VK_W)) {
 			if(Map.tab[Y-1][X]!=Map.mur){
 				StdDraw.setPenColor(Color.BLUE);
 				StdDraw.filledRectangle(X, Y, X+4, 1);
 				
 			}
+			
+		}
+	}
+
+
+	public static void laserPerso1(Perso perso){
+		int nbBalle=8;
+		int range=4;
+		int i=0;
+		if (StdDraw.isKeyPressed(KeyEvent.VK_E) && StdDraw.isKeyPressed(KeyEvent.VK_Z) ) {
+			while (Map.tab[X][Y]!=1 || i !=4){
+				i++;
+				StdDraw.filledSquare(X, Y, 10);
+				Y++;
+			}
+		}
+		else if (StdDraw.isKeyPressed(KeyEvent.VK_E) && StdDraw.isKeyPressed(KeyEvent.VK_D) ) {
+			
+		}
+		else if (StdDraw.isKeyPressed(KeyEvent.VK_E) && StdDraw.isKeyPressed(KeyEvent.VK_S) ) {
+			
+		}
+		else if (StdDraw.isKeyPressed(KeyEvent.VK_E) && StdDraw.isKeyPressed(KeyEvent.VK_Q) ) {
+			
+		}
+	}
+	public static void laserPerso2(Perso perso){
+		int nbBalle=8;
+		int range=4;
+		if (StdDraw.isKeyPressed(KeyEvent.VK_E) && StdDraw.isKeyPressed(KeyEvent.VK_UP) ) {
+			
+		}
+		else if (StdDraw.isKeyPressed(KeyEvent.VK_E) && StdDraw.isKeyPressed(KeyEvent.VK_RIGHT) ) {
+			
+		}
+		else if (StdDraw.isKeyPressed(KeyEvent.VK_E) && StdDraw.isKeyPressed(KeyEvent.VK_DOWN) ) {
+			
+		}
+		else if (StdDraw.isKeyPressed(KeyEvent.VK_E) && StdDraw.isKeyPressed(KeyEvent.VK_LEFT) ) {
 			
 		}
 	}

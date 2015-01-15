@@ -9,6 +9,8 @@ public class Perso extends Map {
 	int x;
 	int y;
 	Color c;
+	int nbBalle;
+	int range;
 
 	public Perso(int x, int y, Color c) {
 		this.x = x;
