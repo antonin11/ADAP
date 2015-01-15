@@ -20,8 +20,8 @@ public class main {
 		// nombre de joueur
 
 		map = new Map();
-		perso1 = new Perso(1, 1, Color.BLUE);
-		perso2 = new Perso(15, 1, Color.RED);
+		perso1 = new Perso(1, 7, Color.BLUE);
+		perso2 = new Perso(15, 7, Color.RED);
 
 		StdDraw.setCanvasSize(1200, 600);
 
