@@ -3,113 +3,105 @@ package principal;
 import StdDraw.StdDraw;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
+
 import java.awt.event.KeyEvent;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableCellRenderer;
+public class Map extends main {
 
-import org.omg.CORBA.PUBLIC_MEMBER;
-
-public class Map {
-	public int sizeMapx;
-	int sizeMapy;
-	int sizeCar; // carreau=Car
-	int a = 17; // abscisse
-	int o = 9; // ordonnée
-	int coul = 0;
-	int mur = 1;
+	public static final float WIDTH = 70f;
+	public static final int sizeMapX = 1200;
+	public static final int sizeMapY = 600;
+	static int coul = 0;
+	static int mur = 1;
 	int lum = 2;
 	int ordi = 3;
-	float WIDTH = 30f;
 
 	public static int[][] tab = {
 			{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-			{ 1, 5, 1, 0, 1, 0, 2, 0, 1, 0, 0, 0, 0, 0, 0, 4, 1 },
+			{ 1, 0, 1, 0, 1, 0, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1 },
 			{ 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
 			{ 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1 },
 			{ 1, 0, 1, 2, 1, 0, 0, 2, 0, 0, 1, 0, 1, 0, 1, 0, 1 },
 			{ 1, 0, 1, 0, 1, 0, 1, 0, 1, 2, 0, 0, 3, 0, 1, 0, 1 },
 			{ 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1 },
 			{ 1, 0, 0, 2, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
-			{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } };;
+			{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } };
 
 	// Le tableau est définit en intervertissant les x et les y .
 	// Il faut donc définir x=j et y=i dans les boucles for.
 
 	public Map() {
-		sizeCar = 29;
-		sizeMapx = a * sizeCar;
-		sizeMapy = o * sizeCar;
 
 	}
 
 	public void display() { // Afficher la MAP à l'écran c'est à dire défnit une
 							// fenetre.
 
-		StdDraw.setXscale(0, sizeMapx);
-		StdDraw.setYscale(0, sizeMapy);
-		affichageInit();
-		StdDraw.show(0);
-		/**
-		 * for (int i =0;i<=sizeMapx;i+=sizeCar){ StdDraw.line(0,i,sizeMapx, i);
-		 * 
-		 * }
-		 * 
-		 * for (int i= 0; i <=sizeMapx;i+=sizeCar){
-		 * StdDraw.line(i,0,i,sizeMapy); }
-		 */		
+		StdDraw.setXscale(-100, sizeMapX + 100);
+		StdDraw.setYscale(-100, sizeMapY + 100);
 
-	}
-
-	public void affichageInit() {
-
-		for (int i = 0; i < (a); i++) {
-			for (int j = 0; j < (o); j++) {
-					double x = WIDTH * i;
-					double y = sizeMapy - WIDTH * j;
-					double r = WIDTH / 2;
+		for (int j = 0; j < tab.length; j++) {
+			for (int i = 0; i < tab[j].length; i++) {
+				double x = WIDTH * i;
+				double y = sizeMapY - WIDTH * j;
+				double r = WIDTH / 2;
 
 				if (tab[j][i] == coul) {
 					StdDraw.setPenColor(Color.WHITE);
 					StdDraw.filledSquare(x, y, r);
-				}
-				else if (tab[j][i] == mur) {
+				} else if (tab[j][i] == mur) {
 					StdDraw.setPenColor(Color.BLACK);
 					StdDraw.filledSquare(x, y, r);
-				}
-				else if (tab[j][i] == lum) {
+				} else if (tab[j][i] == lum) {
 					StdDraw.setPenColor(Color.YELLOW);
 					StdDraw.filledSquare(x, y, r);
-				}
-				else if (tab[j][i] == ordi) {
+				} else if (tab[j][i] == ordi) {
 					StdDraw.setPenColor(Color.GREEN);
 					StdDraw.filledSquare(x, y, r);
 				}
-				else if (tab[j][i] == 4) {
-					StdDraw.setPenColor(Color.RED);
-					StdDraw.filledCircle(x, y, r);
-				}
-				else if (tab[j][i] == 5) {
-					StdDraw.setPenColor(Color.BLUE);
-					StdDraw.filledCircle(x, y, r);
-				}
+
 			}
 		}
-
+		/*
+		 * Si on veut afficher la grille for (int i =5;i<=9*70;i+=70){
+		 * StdDraw.line(-35,i,sizeMapX-46, i);
+		 * 
+		 * 
+		 * }
+		 * 
+		 * for (int i= 35; i <=16*70;i+=70){ StdDraw.line(i,5,i,sizeMapY+20); }
+		 */
 	}
 
-}
+	public static void lumiere() {
+		for (int j = 0; j < tab.length; j++) {
+			for (int i = 0; i < tab[j].length; i++) {
+				double x = WIDTH * i;
+				double y = sizeMapY - WIDTH * j;
+				double r = WIDTH / 2;
 
-		/**
-		 * Affiche la position de la souris (aux carreaux) if
-		 * (StdDraw.mousePressed()){ double clickX= StdDraw.mouseX(); double
-		 * clickY= StdDraw.mouseY();
-		 * 
-		 * System.out.println("["+clickX/sizeCar+";"+(int)((clickY/sizeCar))+"]"
-		 * );
-		 */
+				if (StdDraw.isKeyPressed(KeyEvent.VK_SPACE)) {
+					if (tab[j][i] != 2) {
+
+						StdDraw.setPenColor(Color.BLACK);
+						StdDraw.filledSquare(x, y, r + 1);
+
+					}
+
+				}
+			}
+
+		}
+	}
+
+	
+	}
+
+
+/**
+ * Affiche la position de la souris (aux carreaux) if (StdDraw.mousePressed()){
+ * double clickX= StdDraw.mouseX(); double clickY= StdDraw.mouseY();
+ * 
+ * System.out.println("["+clickX/sizeCar+";"+(int)((clickY/sizeCar))+"]" );
+ */
 
