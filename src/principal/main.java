@@ -212,8 +212,11 @@ public class main {
 				Map.breakLight(Y,X);
 			}
 
+
+			}
 		}
-	}
+	
+
 
 /*	public static boolean ordiHacké(Perso perso1) {
 		int X = perso1.getX();
@@ -253,3 +256,4 @@ public class main {
 		return false;
 	}¨*/
 }
+

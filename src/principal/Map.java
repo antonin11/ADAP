@@ -62,8 +62,8 @@ public class Map extends main {
 	{ 0, 0, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 			{ 0, 0, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 			{ 0, 0, -1, -1, -1, 0, 0, 0, -1, -1, -1, 0, 0, 0, 0, 0, 0 },
-			{ 0, 0, -1, -1, -1, 0, -1, -1, -1, -1, -1, 0, 0, 0, 0, 0, 0 },
-			{ 0, 0, -1, -1, -1, 0, -1, -1, -1, -1, -1, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, -1, -1, -1, 0, -1, -1, -2, -1, -1, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, -1, -1, -1, 0, -1, -1, -2, -1, -1, 0, 0, 0, 0, 0, 0 },
 			{ 0, 0, -1, -1, -1, 0, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0 },
 			{ 0, 0, 0, 0, 0, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 			{ 0, 0, 0, 0, 0, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -123,15 +123,15 @@ public class Map extends main {
 	
 	public static void breakLight(int x, int y){
 		tab [x][y]=0;
-		lumi [x][y]=0;
-		lumi [x+1][y]=0;
-		lumi [x][y+1]=0;
-		lumi [x-1][y]=0;
-		lumi [x][y-1]=0;
-		lumi [x+1][y+1]=0;
-		lumi [x+1][y-1]=0;
-		lumi [x-1][y-1]=0;
-		lumi [x-1][y+1]=0;
+		lumi [x][y]++;
+		lumi [x+1][y]++;
+		lumi [x][y+1]++;
+		lumi [x-1][y]++;
+		lumi [x][y-1]++;
+		lumi [x+1][y+1]++;
+		lumi [x+1][y-1]++;
+		lumi [x-1][y-1]++;
+		lumi [x-1][y+1]++;
 	}
 
 	public static void lumiere() {
@@ -143,7 +143,7 @@ public class Map extends main {
 				double y = WIDTH * j + r;
 
 				if (StdDraw.isKeyPressed(KeyEvent.VK_SPACE)) {
-					if (lumi[j][i] == 0) {
+					if (lumi[j][i] >= 0) {
 						StdDraw.setPenColor(Color.BLACK);
 
 						StdDraw.filledSquare(x, y, r + 1);
