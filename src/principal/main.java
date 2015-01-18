@@ -62,6 +62,7 @@ public class main {
 		Y = perso.getY();
 
 		if (perso2.isFreeze()) {
+			
 			return;
 		}
 		if (StdDraw.isKeyPressed(KeyEvent.VK_UP)) {
@@ -98,6 +99,7 @@ public class main {
 
 		X = perso.getX();
 		Y = perso.getY();
+		
 		if (perso1.isFreeze()) {
 			return;
 		}
@@ -167,8 +169,9 @@ public class main {
 			if (X == perso2.getX() && Y == perso2.getY()) {
 				perso2.setIsFreeze(true);
 			}
-			if (Map.tab [X][Y] == 2 && StdDraw.isKeyPressed(KeyEvent.VK_E)) {
-				Map.breakLight(X,Y);
+			if (StdDraw.isKeyPressed(KeyEvent.VK_E))
+				if(Map.tab [Y][X] == 2 ) {
+				Map.breakLight(Y,X);
 			}
 		}
 	}
@@ -204,6 +207,10 @@ public class main {
 			if (X == perso1.getX() && Y == perso1.getY()) {
 				perso1.setIsFreeze(true);
 			}
+			if (StdDraw.isKeyPressed(KeyEvent.VK_ENTER))
+				if(Map.tab [Y][X] == 2 ) {
+				Map.breakLight(Y,X);
+			}
 
 		}
 	}
@@ -214,7 +221,7 @@ public class main {
 		int Xordi = WIDTH * X+WIDTH/2;
 		int Yordi = WIDTH * Y+WIDTH/2;
 		if (X == Xordi && Y == Yordi) {
-			if (!timer.isRunning()-timer.getElapsedTime()) {
+			if (!timer.running()) {
 				timer.start();
 			}
 		}
@@ -232,8 +239,8 @@ public class main {
 
 		return false;
 	}
-	*/
-	/*public static boolean isFinished()
+	
+	public static boolean isFinished()
 	{
 		if(ordiHacké(perso1)){
 			StdDraw.setPenColor(Color.WHITE);
@@ -244,5 +251,5 @@ public class main {
 			return true;
 	}
 		return false;
-	}*/
+	}¨*/
 }
