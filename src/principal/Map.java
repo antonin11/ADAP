@@ -120,6 +120,19 @@ public class Map extends main {
 		 * for (int i= 35; i <=16*70;i+=70){ StdDraw.line(i,5,i,sizeMapY+20); }
 		 */
 	}
+	
+	public static void breakLight(int x, int y){
+		tab [x][y]=0;
+		lumi [x][y]=0;
+		lumi [x+1][y]=0;
+		lumi [x][y+1]=0;
+		lumi [x-1][y]=0;
+		lumi [x][y-1]=0;
+		lumi [x+1][y+1]=0;
+		lumi [x+1][y-1]=0;
+		lumi [x-1][y-1]=0;
+		lumi [x-1][y+1]=0;
+	}
 
 	public static void lumiere() {
 		for (int j = 0; j < lumi.length; j++) {

@@ -167,6 +167,9 @@ public class main {
 			if (X == perso2.getX() && Y == perso2.getY()) {
 				perso2.setIsFreeze(true);
 			}
+			if (Map.tab [X][Y] == 2 && StdDraw.isKeyPressed(KeyEvent.VK_E)) {
+				Map.breakLight(X,Y);
+			}
 		}
 	}
 
