@@ -1,23 +1,23 @@
 package principal;
 
 import StdDraw.StdDraw;
+import java.util.Timer;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 
 public class main {
-	private static int WIDTH = 0;
+	private static int WIDTH = 10;
 	private static Map map;
 	private static Perso perso1;
 	private static Perso perso2;
 	private static int X;
 	private static int Y;
-	
+	private static StopWatch timer;
 
 	public static void main(String[] args) throws InterruptedException {
-
-		// on définit le nombre de joueur et on crée un tableau de Perso du
-		// nombre de joueur
 
 		map = new Map();
 		perso1 = new Perso(1, 7, Color.BLUE);
@@ -25,33 +25,33 @@ public class main {
 
 		StdDraw.setCanvasSize(1200, 600);
 
-		while (true) {
+		while (true){
 
 			StopWatch stopWatch = new StopWatch();
 			stopWatch.start();
-			
+
+			StdDraw.show(0);
+
 			Map.lumiere();
-			laserPerso1(perso1);
-			//tir(perso2);
+
+			shootP1(perso1);
+			shootP2(perso2);
+
 			move1(perso1);
 			move(perso2);
-			
-			
-			
+
 			StdDraw.show(0);
 			map.display();
 
 			perso1.persoDisplay();
 			perso2.persoDisplay();
-	
+
 			stopWatch.stop();
 
-			long timeToWait = 50 - stopWatch.getElapsedTime();
-
+			long timeToWait = 70 - stopWatch.getElapsedTime();
 
 			if (timeToWait > 0)
 				Thread.sleep(timeToWait);
-			
 		}
 
 	}
@@ -61,34 +61,34 @@ public class main {
 		X = perso.getX();
 		Y = perso.getY();
 
-		
-		
+		if (perso2.isFreeze()) {
+			return;
+		}
 		if (StdDraw.isKeyPressed(KeyEvent.VK_UP)) {
 
-			if(Map.tab[Y+1][X]!=Map.mur){
+			if (Map.tab[Y + 1][X] != Map.mur && Map.tab[Y + 1][X] != Map.ordi) {
 				Y = Y + 1;
 
 			}
 
 		}
 		if (StdDraw.isKeyPressed(KeyEvent.VK_DOWN)) {
-			if(Map.tab[Y-1][X]!=Map.mur){
+			if (Map.tab[Y - 1][X] != Map.mur && Map.tab[Y - 1][X] != Map.ordi) {
 				Y = Y - 1;
 			}
 		}
 
 		if (StdDraw.isKeyPressed(KeyEvent.VK_RIGHT)) {
-			if(Map.tab[Y][X+1]!=Map.mur){
+			if (Map.tab[Y][X + 1] != Map.mur && Map.tab[Y][X + 1] != Map.ordi) {
 				X = X + 1;
 			}
 		}
 		if (StdDraw.isKeyPressed(KeyEvent.VK_LEFT)) {
-			if(Map.tab[Y][X-1]!=Map.mur){
+			if (Map.tab[Y][X - 1] != Map.mur && Map.tab[Y][X - 1] != Map.ordi) {
 				X = X - 1;
 
 			}
 		}
-			
 
 		perso.setX(X);
 		perso.setY(Y);
@@ -98,87 +98,148 @@ public class main {
 
 		X = perso.getX();
 		Y = perso.getY();
-
+		if (perso1.isFreeze()) {
+			return;
+		}
 		if (StdDraw.isKeyPressed(KeyEvent.VK_Z)) {
-			if(Map.tab[Y+1][X]!=Map.mur){
-			Y = Y + 1;
+
+			if (Map.tab[Y + 1][X] != Map.mur) {
+				Y = Y + 1;
+				// StdDraw.picture(X, Y, "Perso1bas.png", 72, 71);
+
 			}
+
 		}
 		if (StdDraw.isKeyPressed(KeyEvent.VK_S)) {
-			if(Map.tab[Y-1][X]!=Map.mur){
-			Y = Y - 1;
+			if (Map.tab[Y - 1][X] != Map.mur) {
+				Y = Y - 1;
+				// StdDraw.picture(X, Y, "Perso1haut.png", 72, 71);
+			}
 		}
-		}
+
 		if (StdDraw.isKeyPressed(KeyEvent.VK_D)) {
-			if(map.tab[Y][X+1]!=Map.mur){
-			X = X + 1;
+			if (Map.tab[Y][X + 1] != Map.mur) {
+				X = X + 1;
+				// StdDraw.picture(X, Y, "Perso1droite.png", 72, 71);
 			}
 		}
 		if (StdDraw.isKeyPressed(KeyEvent.VK_Q)) {
-			if(map.tab[Y][X-1]!=Map.mur){
-			X = X - 1;
+			if (Map.tab[Y][X - 1] != Map.mur) {
+				X = X - 1;
+				// StdDraw.picture(X, Y, "Perso1gauche.png", 72, 71);
 
-		}
 			}
-			
-		
-		
+		}
 
 		perso.setX(X);
 		perso.setY(Y);
-		
-		
 
+	}
+
+	public static void shootP1(Perso perso) {
+		int X = perso.getX();
+		int Y = perso.getY();
+
+		if (perso.isFreeze()) {
+			return;
 		}
 
-	public static void tir1(Perso perso) {
-
-		if (StdDraw.isKeyPressed(KeyEvent.VK_W)) {
-			if(Map.tab[Y-1][X]!=Map.mur){
-				StdDraw.setPenColor(Color.BLUE);
-				StdDraw.filledRectangle(X, Y, X+4, 1);
-				
+		for (int i = 0; i < 4; ++i) {
+			if (Map.tab[Y][X] == Map.mur) {
+				return;
 			}
-			
-		}
-	}
-
-
-	public static void laserPerso1(Perso perso){
-		int nbBalle=8;
-		int range=4;
-		int i=0;
-		if (StdDraw.isKeyPressed(KeyEvent.VK_E) && StdDraw.isKeyPressed(KeyEvent.VK_Z) ) {
-			while (Map.tab[X][Y]!=1 || i !=4){
-				i++;
-				StdDraw.filledSquare(X, Y, 10);
-				Y++;
+			if (StdDraw.isKeyPressed(KeyEvent.VK_Z)
+					&& StdDraw.isKeyPressed(KeyEvent.VK_E)) {
+				Y = Y + 1;
+			}
+			if (StdDraw.isKeyPressed(KeyEvent.VK_S)
+					&& StdDraw.isKeyPressed(KeyEvent.VK_E)) {
+				Y = Y - 1;
+			}
+			if (StdDraw.isKeyPressed(KeyEvent.VK_D)
+					&& StdDraw.isKeyPressed(KeyEvent.VK_E)) {
+				X = X + 1;
+			}
+			if (StdDraw.isKeyPressed(KeyEvent.VK_Q)
+					&& StdDraw.isKeyPressed(KeyEvent.VK_E)) {
+				X = X - 1;
+			}
+			if (X == perso2.getX() && Y == perso2.getY()) {
+				perso2.setIsFreeze(true);
 			}
 		}
-		else if (StdDraw.isKeyPressed(KeyEvent.VK_E) && StdDraw.isKeyPressed(KeyEvent.VK_D) ) {
-			
+	}
+
+	public static void shootP2(Perso perso) {
+		int X = perso.getX();
+		int Y = perso.getY();
+
+		if (perso.isFreeze()) {
+			return;
 		}
-		else if (StdDraw.isKeyPressed(KeyEvent.VK_E) && StdDraw.isKeyPressed(KeyEvent.VK_S) ) {
-			
-		}
-		else if (StdDraw.isKeyPressed(KeyEvent.VK_E) && StdDraw.isKeyPressed(KeyEvent.VK_Q) ) {
-			
+
+		for (int i = 0; i < 4; ++i) {
+			if (Map.tab[Y][X] == Map.mur) {
+				return;
+			}
+			if (StdDraw.isKeyPressed(KeyEvent.VK_UP)
+					&& StdDraw.isKeyPressed(KeyEvent.VK_ENTER)) {
+				Y = Y + 1;
+			}
+			if (StdDraw.isKeyPressed(KeyEvent.VK_DOWN)
+					&& StdDraw.isKeyPressed(KeyEvent.VK_ENTER)) {
+				Y = Y - 1;
+			}
+			if (StdDraw.isKeyPressed(KeyEvent.VK_RIGHT)
+					&& StdDraw.isKeyPressed(KeyEvent.VK_ENTER)) {
+				X = X + 1;
+			}
+			if (StdDraw.isKeyPressed(KeyEvent.VK_LEFT)
+					&& StdDraw.isKeyPressed(KeyEvent.VK_ENTER)) {
+				X = X - 1;
+			}
+			if (X == perso1.getX() && Y == perso1.getY()) {
+				perso1.setIsFreeze(true);
+			}
+
 		}
 	}
-	public static void laserPerso2(Perso perso){
-		int nbBalle=8;
-		int range=4;
-		if (StdDraw.isKeyPressed(KeyEvent.VK_E) && StdDraw.isKeyPressed(KeyEvent.VK_UP) ) {
-			
+
+/*	public static boolean ordiHacké(Perso perso1) {
+		int X = perso1.getX();
+		int Y = perso1.getY();
+		int Xordi = WIDTH * X+WIDTH/2;
+		int Yordi = WIDTH * Y+WIDTH/2;
+		if (X == Xordi && Y == Yordi) {
+			if (!timer.isRunning()-timer.getElapsedTime()) {
+				timer.start();
+			}
 		}
-		else if (StdDraw.isKeyPressed(KeyEvent.VK_E) && StdDraw.isKeyPressed(KeyEvent.VK_RIGHT) ) {
-			
+
+		if (X != Xordi || Y != Yordi) {
+			if (!timer.isRunning())
+				timer.stop();
 		}
-		else if (StdDraw.isKeyPressed(KeyEvent.VK_E) && StdDraw.isKeyPressed(KeyEvent.VK_DOWN) ) {
-			
+
+		if (timer.getElapsedTime() > 5000) {
+			System.out.println("Win");
+			return true;
+
 		}
-		else if (StdDraw.isKeyPressed(KeyEvent.VK_E) && StdDraw.isKeyPressed(KeyEvent.VK_LEFT) ) {
-			
-		}
+
+		return false;
 	}
+	*/
+	/*public static boolean isFinished()
+	{
+		if(ordiHacké(perso1)){
+			StdDraw.setPenColor(Color.WHITE);
+			StdDraw.text(600, 300, "Intru a gagné ! ");
+			StdDraw.setPenColor(Color.BLUE);
+			StdDraw.filledCircle(600, 300, 300);
+			
+			return true;
+	}
+		return false;
+	}*/
 }

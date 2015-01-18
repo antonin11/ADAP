@@ -11,11 +11,13 @@ public class Perso extends Map {
 	Color c;
 	int nbBalle;
 	int range;
+	boolean freeze;
 
 	public Perso(int x, int y, Color c) {
 		this.x = x;
 		this.y = y;
 		this.c = c;
+		freeze = false;
 
 	}
 
@@ -35,30 +37,35 @@ public class Perso extends Map {
 
 		return y = value;
 	}
-
-	public int getX1() {
-		return x;
+	
+	public boolean isFreeze(){
+		return freeze;
 	}
-
-	public int getY1() {
-		return y;
-	}
-
-	public int setX1(int value) {
-		return x = value;
-	}
-
-	public int setY1(int value) {
-
-		return y = value;
+	
+	public void setIsFreeze(boolean value){
+		
+		freeze = value;
+		
 	}
 
 	public void persoDisplay() {
-		StdDraw.setPenColor(c);
-		double r = 28;
-		double x = WIDTH * getX()+WIDTH/2;
-		double y =  WIDTH * getY()+WIDTH/2;
-		StdDraw.filledCircle(x, y, r);
+		
+		if(freeze){
+			StdDraw.setPenColor(Color.GREEN);
+			double r = 28;
+			double x = WIDTH * getX()+WIDTH/2;
+			double y =  WIDTH * getY()+WIDTH/2;
+			StdDraw.filledCircle(x, y, r);
+		}
+		else{
+			StdDraw.setPenColor(c);
+			double r = 28;
+			double x = WIDTH * getX()+WIDTH/2;
+			double y =  WIDTH * getY()+WIDTH/2;
+			StdDraw.filledCircle(x, y, r);
+			
+		}
 
+			
 	}
 }
