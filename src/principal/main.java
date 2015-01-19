@@ -1,8 +1,8 @@
 package principal;
 
 import StdDraw.StdDraw;
-import java.util.Timer;
 
+import java.util.Timer;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.io.ByteArrayInputStream;
@@ -15,8 +15,11 @@ public class main {
 	private static Perso perso2;
 	private static int X;
 	private static int Y;
-	private static StopWatch timer;
-
+	private static StopWatch timer = new StopWatch();
+	private static StopWatch timer1 = new StopWatch();
+	private static StopWatch timerfreeze = new StopWatch();
+	
+	
 	public static void main(String[] args) throws InterruptedException {
 
 		map = new Map();
@@ -25,35 +28,39 @@ public class main {
 
 		StdDraw.setCanvasSize(1200, 600);
 
-		while (true){
+		while (true) {
+			if (isFinished()) {
+			//	IntruWin();
+				return;
+			} else {
+				StopWatch stopWatch = new StopWatch();
+				stopWatch.start();
 
-			StopWatch stopWatch = new StopWatch();
-			stopWatch.start();
+				StdDraw.show(0);
 
-			StdDraw.show(0);
+				Map.lumiere();
 
-			Map.lumiere();
+				shootP1(perso1);
+				shootP2(perso2);
 
-			shootP1(perso1);
-			shootP2(perso2);
+				move1(perso1);
+				move(perso2);
 
-			move1(perso1);
-			move(perso2);
+				StdDraw.show(0);
+				map.display();
 
-			StdDraw.show(0);
-			map.display();
+				perso1.persoDisplay();
+				perso2.persoDisplay();
 
-			perso1.persoDisplay();
-			perso2.persoDisplay();
+				stopWatch.stop();
 
-			stopWatch.stop();
+				long timeToWait = 70 - stopWatch.getElapsedTime();
+				
+				if (timeToWait > 0)
+					Thread.sleep(timeToWait);
+			}
 
-			long timeToWait = 70 - stopWatch.getElapsedTime();
-
-			if (timeToWait > 0)
-				Thread.sleep(timeToWait);
 		}
-
 	}
 
 	public static void move(Perso perso) {
@@ -62,7 +69,7 @@ public class main {
 		Y = perso.getY();
 
 		if (perso2.isFreeze()) {
-			
+
 			return;
 		}
 		if (StdDraw.isKeyPressed(KeyEvent.VK_UP)) {
@@ -99,7 +106,7 @@ public class main {
 
 		X = perso.getX();
 		Y = perso.getY();
-		
+
 		if (perso1.isFreeze()) {
 			return;
 		}
@@ -166,13 +173,16 @@ public class main {
 					&& StdDraw.isKeyPressed(KeyEvent.VK_E)) {
 				X = X - 1;
 			}
-			if (X == perso2.getX() && Y == perso2.getY()) {
+			if (X == perso2.getX() && Y == perso2.getY() && StdDraw.isKeyPressed(KeyEvent.VK_E)) {
+		
+				
 				perso2.setIsFreeze(true);
+			
 			}
 			if (StdDraw.isKeyPressed(KeyEvent.VK_E))
-				if(Map.tab [Y][X] == 2 ) {
-				Map.breakLight(Y,X);
-			}
+				if (Map.tab[Y][X] >= 2) {
+					Map.breakLight(Y, X);
+				}
 		}
 	}
 
@@ -204,56 +214,80 @@ public class main {
 					&& StdDraw.isKeyPressed(KeyEvent.VK_ENTER)) {
 				X = X - 1;
 			}
-			if (X == perso1.getX() && Y == perso1.getY()) {
+			if (X == perso1.getX() && Y == perso1.getY() && StdDraw.isKeyPressed(KeyEvent.VK_ENTER)) {
 				perso1.setIsFreeze(true);
 			}
 			if (StdDraw.isKeyPressed(KeyEvent.VK_ENTER))
-				if(Map.tab [Y][X] == 2 ) {
-				Map.breakLight(Y,X);
-			}
+				if (Map.tab[Y][X] >= 2) {
+					Map.breakLight(Y, X);
+				}
 
-
-			}
 		}
+	}
 	
-
-
-/*	public static boolean ordiHack(Perso perso1) {
+	public static boolean HackeurArret(Perso perso2){
+		int X = perso2.getX();
+		int Y = perso2.getY();
+		int X1 = perso1.getX();
+		int Y1 = perso1.getY();
+		
+		if (X != X1 && Y != Y1) {
+			timer1.start();
+		}
+		if (X == X1 && Y == Y1) {
+			StdDraw.setPenColor(Color.WHITE);
+			StdDraw.filledRectangle(1200,600,100,40);
+			StdDraw.setPenColor(Color.RED);
+			StdDraw.text(1200, 600, "00:00:"+"0"+(5-(timer1.getElapsedTimeSecs())));
+			timer1.stop();
+			
+		}
+		if (timer1.getElapsedTimeSecs() > 5) {
+			System.out.println("Guardien gagne !");
+			return true;
+		}
+			
+		
+		return false;
+		
+	}
+	
+	public static boolean ordiHack(Perso perso1) {
 		int X = perso1.getX();
 		int Y = perso1.getY();
-		int Xordi = WIDTH * X+WIDTH/2;
-		int Yordi = WIDTH * Y+WIDTH/2;
-		if (X == Xordi && Y == Yordi) {
-			if (!timer.running()) {
-				timer.start();
-			}
+
+		if (Map.tab[Y][X] == Map.coul) {
+			timer.start();
 		}
-
-		if (X != Xordi || Y != Yordi) {
-			if (!timer.isRunning())
-				timer.stop();
-		}
-
-		if (timer.getElapsedTime() > 5000) {
-			System.out.println("Win");
-			return true;
-
-		}
-
-		return false;
-	}
-	
-	public static boolean isFinished()
-	{
-		if(ordiHack(perso1)){
+		if (Map.tab[Y][X] == Map.ordi ) {
 			StdDraw.setPenColor(Color.WHITE);
-			StdDraw.text(600, 300, "Intru a gagn ! ");
+			StdDraw.filledRectangle(0,600,100,40);
 			StdDraw.setPenColor(Color.BLUE);
-			StdDraw.filledCircle(600, 300, 300);
+			StdDraw.text(0, 600, "00:00:"+"0"+(5-(timer.getElapsedTimeSecs())));
+			timer.stop();
+		}
+		if (timer.getElapsedTimeSecs() > 5) {
+			
+			System.out.println("Hackeur gagne");
 			
 			return true;
-	}
+		}
+			
+		
 		return false;
-	}¬*/
-}
+	}
+
+	public static boolean isFinished() {
+		
+		if (ordiHack(perso1) || HackeurArret(perso2)) {
+			
+			return true;
+			
+		}
+		return false;
+	}
+
+
+	
+	}
 

@@ -12,6 +12,7 @@ public class Perso extends Map {
 	int nbBalle;
 	int range;
 	boolean freeze;
+	
 
 	public Perso(int x, int y, Color c) {
 		this.x = x;
