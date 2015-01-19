@@ -87,24 +87,21 @@ public class Map extends main {
 				double r = WIDTH / 2;
 				double x = WIDTH * i + r;
 				double y = WIDTH * j + r;
+				StdDraw.filledSquare(x, y, r);
 
 				if (tab[j][i] == coul) {
-					StdDraw.setPenColor(Color.WHITE);
-					StdDraw.filledSquare(x, y, r);
+					//StdDraw.setPenColor(Color.WHITE);
 					StdDraw.picture(x, y, "Herbe.png", 71, 71);
 					
 				} else if (tab[j][i] == mur) {
-					StdDraw.setPenColor(Color.BLACK);
-					StdDraw.filledSquare(x, y, r);
+					//StdDraw.setPenColor(Color.BLACK);
 					StdDraw.picture(x, y, "mur.png", 72, 71);
 					
 				} else if (tab[j][i] == lum) {
-					StdDraw.setPenColor(Color.YELLOW);
-					StdDraw.filledSquare(x, y, r);
+					//StdDraw.setPenColor(Color.YELLOW);
 					StdDraw.picture(x, y, "lumiere.png", 72, 71);
 				} else if (tab[j][i] == ordi) {
-					StdDraw.setPenColor(Color.GREEN);
-					StdDraw.filledSquare(x, y, r);
+					//StdDraw.setPenColor(Color.GREEN);
 					StdDraw.picture(x, y, "pc.png", 71, 71);
 				}
 			
