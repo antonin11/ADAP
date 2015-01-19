@@ -2,14 +2,13 @@ package principal;
 
 import StdDraw.StdDraw;
 
-import java.util.Timer;
+
 import java.awt.Color;
 import java.awt.event.KeyEvent;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+
 
 public class main {
-	private static int WIDTH = 10;
+	private static int WIDTH = 35;
 	private static Map map;
 	private static Perso perso1;
 	private static Perso perso2;
@@ -43,8 +42,9 @@ public class main {
 				shootP1(perso1);
 				shootP2(perso2);
 
-				move1(perso1);
-				move(perso2);
+			move1(perso1);
+				move2(perso2);
+
 
 				StdDraw.show(0);
 				map.display();
@@ -54,7 +54,8 @@ public class main {
 
 				stopWatch.stop();
 
-				long timeToWait = 70 - stopWatch.getElapsedTime();
+
+				long timeToWait = 100 - stopWatch.getElapsedTime();
 				
 				if (timeToWait > 0)
 					Thread.sleep(timeToWait);
@@ -63,7 +64,7 @@ public class main {
 		}
 	}
 
-	public static void move(Perso perso) {
+	public static void move2(Perso perso) {
 
 		X = perso.getX();
 		Y = perso.getY();
@@ -154,9 +155,14 @@ public class main {
 		}
 
 		for (int i = 0; i < 4; ++i) {
-			if (Map.tab[Y][X] == Map.mur) {
+			if (Map.tab[Y][X] == Map.mur|| Map.tab[Y][X] == Map.ordi) {
 				return;
 			}
+			
+			/*if (StdDraw.isKeyPressed(KeyEvent.VK_SPACE) && StdDraw.isKeyPressed(KeyEvent.VK_E )){
+				StdDraw.picture(X, Y, "etincelle.png", WIDTH,WIDTH);
+			}*/
+			
 			if (StdDraw.isKeyPressed(KeyEvent.VK_Z)
 					&& StdDraw.isKeyPressed(KeyEvent.VK_E)) {
 				Y = Y + 1;
@@ -191,11 +197,12 @@ public class main {
 		int Y = perso.getY();
 
 		if (perso.isFreeze()) {
+			
 			return;
 		}
 
 		for (int i = 0; i < 4; ++i) {
-			if (Map.tab[Y][X] == Map.mur) {
+			if (Map.tab[Y][X] == Map.mur || Map.tab[Y][X] == Map.ordi) {
 				return;
 			}
 			if (StdDraw.isKeyPressed(KeyEvent.VK_UP)
@@ -243,7 +250,7 @@ public class main {
 			
 		}
 		if (timer1.getElapsedTimeSecs() > 5) {
-			System.out.println("Guardien gagne !");
+			System.out.println("Gardien gagne !");
 			return true;
 		}
 			
